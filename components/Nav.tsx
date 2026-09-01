@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const WHATSAPP_URL = 'https://wa.me/9770000000000'; // TODO: replace with the real WhatsApp number
+const WHATSAPP_URL = 'https://wa.me/9779847465703';
 
 export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
   return (

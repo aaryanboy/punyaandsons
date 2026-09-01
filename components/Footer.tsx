@@ -19,8 +19,8 @@ export default function Footer() {
         <div>
           <h4 className="text-xs tracking-widest uppercase text-gold mb-4">Reach us</h4>
           <a href="#" className="block text-sm opacity-75 mb-2">WhatsApp</a>
-          <a href="#" className="block text-sm opacity-75 mb-2">Instagram</a>
-          <a href="#" className="block text-sm opacity-75 mb-2">TikTok</a>
+          <a href="https://www.instagram.com/punyajewellery/" target="_blank" rel="noopener noreferrer" className="block text-sm opacity-75 mb-2">Instagram</a>
+          <a href="https://www.tiktok.com/@punyajewellery1" target="_blank" rel="noopener noreferrer" className="block text-sm opacity-75 mb-2">TikTok</a>
           <span className="block text-sm opacity-75 mb-2">Kathmandu, Nepal</span>
         </div>
       </div>
