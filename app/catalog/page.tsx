@@ -74,6 +74,7 @@ function CatalogInner() {
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.04] pointer-events-none" />
                 </div>
                 <div className="p-4 flex flex-col gap-1.5">
                   <span className="text-[11px] tracking-wide uppercase text-gold">{p.label}</span>
