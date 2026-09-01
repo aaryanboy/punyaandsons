@@ -17,9 +17,9 @@ const config: Config = {
         line: 'rgba(43,36,28,0.12)',
       },
       fontFamily: {
-        serif: ['var(--font-fraunces)', 'serif'],
-        sans: ['var(--font-inter)', 'sans-serif'],
-        deva: ['var(--font-devanagari)', 'serif'],
+        serif: ['Fraunces', 'serif'],
+        sans: ['Inter', 'sans-serif'],
+        deva: ['"Noto Serif Devanagari"', 'serif'],
       },
     },
   },
