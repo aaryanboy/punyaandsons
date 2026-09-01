@@ -21,6 +21,20 @@ const config: Config = {
         sans: ['Inter', 'sans-serif'],
         deva: ['"Noto Serif Devanagari"', 'serif'],
       },
+      keyframes: {
+        'fade-in-up': {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'pulse-soft': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        }
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.6s ease-out',
+        'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
+      }
     },
   },
   plugins: [],

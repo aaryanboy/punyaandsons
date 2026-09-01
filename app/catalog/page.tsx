@@ -73,6 +73,7 @@ function CatalogInner() {
                     alt={p.name}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.04] pointer-events-none" />
                 </div>
