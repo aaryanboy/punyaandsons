@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-
-const WHATSAPP_URL = 'https://wa.me/9779847465703';
+import { getWhatsAppHref } from '@/lib/contact';
 
 export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,11 +32,16 @@ export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
   }, [isOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 bg-ivory/95 backdrop-blur-sm flex items-center justify-between px-8 md:px-16 py-6 border-b border-line">
-      <Link href="/" className="flex items-baseline gap-2.5 z-50" onClick={() => setIsOpen(false)}>
-        <span className="font-deva text-2xl text-oxblood font-bold">पुण्य</span>
-        <span className="font-serif text-lg tracking-wide">PUNYA</span>
-        <span className="font-serif text-xs tracking-widest text-gold self-end mb-0.5">&amp; SONS</span>
+    <nav className="sticky top-0 z-50 bg-ivory/95 flex items-center justify-between px-5 sm:px-8 md:px-16 py-3 border-b border-line">
+      <Link href="/" className="z-50 shrink-0" onClick={() => setIsOpen(false)} aria-label="Punya & Sons home">
+        <Image
+          src="/logo/logo-with-gold-feather.webp"
+          alt="Punya & Sons"
+          width={360}
+          height={360}
+          priority
+          className="h-16 w-16 object-contain md:h-20 md:w-20"
+        />
       </Link>
       
       <ul className="hidden md:flex gap-10 text-sm tracking-wide">
@@ -55,13 +59,13 @@ export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
           <Link href="/#story" className="relative after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-left after:scale-x-0 after:bg-oxblood hover:after:scale-x-100 after:transition-transform after:duration-300">Our story</Link>
         </li>
         <li>
-          <Link href="/#contact" className="relative after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-left after:scale-x-0 after:bg-oxblood hover:after:scale-x-100 after:transition-transform after:duration-300">Contact</Link>
+          <a href={getWhatsAppHref()} target="_blank" rel="noopener noreferrer" className="relative after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-left after:scale-x-0 after:bg-oxblood hover:after:scale-x-100 after:transition-transform after:duration-300">Contact</a>
         </li>
       </ul>
 
       <div className="hidden md:block">
         <a
-          href={WHATSAPP_URL}
+          href={getWhatsAppHref()}
           target="_blank"
           rel="noopener noreferrer"
           className="border border-ink px-5 py-2 text-sm rounded-sm hover:bg-ink hover:text-ivory transition-colors"
@@ -73,7 +77,9 @@ export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
       <button 
         className="md:hidden z-50 flex flex-col gap-1.5 p-2"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu"
       >
         <div className={`w-6 h-0.5 bg-ink transition-transform duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
         <div className={`w-6 h-0.5 bg-ink transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`} />
@@ -81,8 +87,10 @@ export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
       </button>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 bg-ivory z-40 flex flex-col items-center justify-center transition-all duration-300 md:hidden ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+      <div
+        id="mobile-menu"
+        aria-hidden={!isOpen}
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-ivory/85 backdrop-blur-lg transition-all duration-300 md:hidden ${isOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}
       >
         <ul className="flex flex-col gap-8 text-xl tracking-wide text-center">
           <li className={isOpen ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
@@ -99,11 +107,11 @@ export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
             <Link href="/#story" onClick={() => setIsOpen(false)}>Our story</Link>
           </li>
           <li className={isOpen ? 'animate-fade-in-up' : 'opacity-0'} style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-            <Link href="/#contact" onClick={() => setIsOpen(false)}>Contact</Link>
+            <a href={getWhatsAppHref()} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>Contact</a>
           </li>
           <li className={`mt-4 ${isOpen ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
             <a
-              href={WHATSAPP_URL}
+              href={getWhatsAppHref()}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-ink px-6 py-3 text-base rounded-sm inline-block"
@@ -116,5 +124,3 @@ export default function Nav({ active }: { active?: 'home' | 'catalog' }) {
     </nav>
   );
 }
-
-export { WHATSAPP_URL };

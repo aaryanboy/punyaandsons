@@ -9,6 +9,7 @@ import '@fontsource/inter/600.css';
 import '@fontsource/noto-serif-devanagari/500.css';
 import '@fontsource/noto-serif-devanagari/700.css';
 import './globals.css';
+import BackToTop from '@/components/BackToTop';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://punyaandsons.com'),
@@ -67,7 +68,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className="font-sans">
         <script
           type="application/ld+json"
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>
           {children}
         </main>
+        <BackToTop />
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from './Nav';
+import { getWhatsAppHref } from '@/lib/contact';
 
 export default function WhatsAppCta({
   label = 'Chat on WhatsApp →',
@@ -9,8 +9,8 @@ export default function WhatsAppCta({
 }) {
   const message = productName
     ? `Hi, I'm interested in the ${productName}`
-    : "Hi, I'd like to ask about a piece from your catalog";
-  const href = `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`;
+    : undefined;
+  const href = getWhatsAppHref(message);
 
   return (
     <a

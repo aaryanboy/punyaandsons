@@ -288,8 +288,14 @@ export default function HomePage() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 text-center border-t border-goldLight/30 pt-4">
-              <span className="font-deva text-2xl text-goldLight font-bold">पुण्य एण्ड सन्स</span>
+            <div className="absolute bottom-6 left-6 right-6 flex flex-col items-center border-t border-goldLight/30 pt-4">
+              <Image
+                src="/logo/logo-with-gold-feather.webp"
+                alt="Punya & Sons"
+                width={360}
+                height={360}
+                className="h-16 w-16 object-contain"
+              />
               <p className="text-xs text-ivory/60 mt-1">Kathmandu, Nepal</p>
             </div>
           </div>
@@ -331,4 +337,3 @@ export default function HomePage() {
     </>
   );
 }
-
